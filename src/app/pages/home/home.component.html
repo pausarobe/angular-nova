@@ -1,3 +1,12 @@
 <div class="home">
-  Soy el componente HOME
+  <p>Soy el componente HOME</p>
+  <button (click)="onReset()">{{ showList ? 'Ocultar' : 'Mostrar' }}</button>
+  <ng-container *ngIf="showList">
+    <ul>
+      <li *ngFor="let hero of heroes" (click)="onHeroClick(hero)" [ngClass]="{'selected': hero.city === city}">{{ hero.name }}</li>
+    </ul>
+    <div>Su ciudad es: {{ city }}</div>
+  </ng-container>
+  <br>
+  <button (click)="addHero()">Nuevo Hero</button>
 </div>

@@ -1,6 +1,6 @@
 <div class="home">
   <p>Soy el componente HOME</p>
-  <button (click)="onReset()">{{ showList ? 'Ocultar' : 'Mostrar' }}</button>
+  <button (click)="onDisplay()">{{ showList ? 'Ocultar' : 'Mostrar' }}</button>
   <ng-container *ngIf="showList">
     <ul>
       <li
@@ -11,7 +11,7 @@
         {{ hero.name }}
       </li>
     </ul>
-    <div>Su ciudad es: {{ selectedHero?.city }}</div>
+    <nova-city [hero]="selectedHero" (reset)="onReset()"></nova-city>
   </ng-container>
   <br />
   <button (click)="addHero()">Nuevo Hero</button>

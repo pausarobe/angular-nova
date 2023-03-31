@@ -19,8 +19,12 @@ export class HomeComponent {
     this.selectedHero = this.heroes[index];
   }
 
-  onReset() {
+  onDisplay() {
     this.showList = !this.showList;
+  }
+
+  onReset() {
+    this.selectedHero = null;
   }
 
   addHero() {

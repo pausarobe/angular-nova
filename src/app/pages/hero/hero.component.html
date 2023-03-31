@@ -9,6 +9,7 @@
         placeholder="Your superhero name"
         formControlName="heroName"
       />
+      <span *ngIf="name.touched && name.invalid">Required</span>
     </div>
     <div>
       <label for="city">City</label>
@@ -18,6 +19,12 @@
         placeholder="Superhero city"
         formControlName="heroCity"
       />
+      <span *ngIf="city.touched && city.errors && city.errors['required']"
+        >Required</span
+      >
+      <span *ngIf="city.touched && city.errors && city.errors['ciudadMala']"
+        >No puede ser NTTCity</span
+      >
     </div>
     <br />
     <button type="submit">Build hero</button>

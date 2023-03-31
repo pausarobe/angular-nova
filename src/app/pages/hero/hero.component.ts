@@ -22,11 +22,23 @@ export class HeroComponent implements OnInit {
   buildForm() {
     this.form = new FormGroup({
       heroName: new FormControl(null, [Validators.required]),
-      heroCity: new FormControl(null, [Validators.required]),
+      heroCity: new FormControl('NTTCity', [Validators.required, this.validateCity.bind(this)]),
     });
   }
 
   onSubmit() {
     console.log('form', this.form);
+    if (this.form.valid) {
+    } else {
+      this.form.markAllAsTouched();
+    }
+  }
+
+  validateCity(control: FormControl): {[s: string]: boolean} {
+    if (control.value === 'NTTCity') {
+      return { 'ciudadMala': true };
+    } else {
+      return null;
+    }
   }
 }

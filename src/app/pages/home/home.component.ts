@@ -1,22 +1,22 @@
-import { Component } from "@angular/core";
-import { Hero, IHero } from "./home.model";
+import { Component } from '@angular/core';
+import { Hero, IHero } from './home.model';
 
 @Component({
   selector: 'nova-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
   heroes: IHero[] = [
     { name: 'Spiderman', city: 'New York' },
     { name: 'Batman', city: 'Gotham' },
-    { name: 'Thor', city: 'Asgard' }
+    { name: 'Thor', city: 'Asgard' },
   ];
-  city: string;
   showList = true;
+  selectedHero: IHero;
 
-  onHeroClick(hero: IHero) {
-    this.city = hero.city
+  onHeroClick(hero: IHero, index: number) {
+    this.selectedHero = this.heroes[index];
   }
 
   onReset() {

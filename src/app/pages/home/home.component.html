@@ -3,10 +3,16 @@
   <button (click)="onReset()">{{ showList ? 'Ocultar' : 'Mostrar' }}</button>
   <ng-container *ngIf="showList">
     <ul>
-      <li *ngFor="let hero of heroes" (click)="onHeroClick(hero)" [ngClass]="{'selected': hero.city === city}">{{ hero.name }}</li>
+      <li
+        *ngFor="let hero of heroes; index as i"
+        (click)="onHeroClick(hero, i)"
+        [ngClass]="{ selected: hero === selectedHero }"
+      >
+        {{ hero.name }}
+      </li>
     </ul>
-    <div>Su ciudad es: {{ city }}</div>
+    <div>Su ciudad es: {{ selectedHero?.city }}</div>
   </ng-container>
-  <br>
+  <br />
   <button (click)="addHero()">Nuevo Hero</button>
 </div>

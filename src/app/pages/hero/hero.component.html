@@ -1,0 +1,25 @@
+<div class="hero">
+  <p>Soy el componente HERO</p>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Your superhero name"
+        formControlName="heroName"
+      />
+    </div>
+    <div>
+      <label for="city">City</label>
+      <input
+        type="text"
+        id="city"
+        placeholder="Superhero city"
+        formControlName="heroCity"
+      />
+    </div>
+    <br />
+    <button type="submit">Build hero</button>
+  </form>
+</div>

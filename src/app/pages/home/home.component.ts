@@ -8,14 +8,25 @@ import { Hero, IHero } from './home.model';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  heroes: IHero[];
+  // heroes: IHero[];
+  heroes: IHero[] = [
+    { name: 'Spiderman', city: 'New York' },
+    { name: 'Batman', city: 'Gotham' },
+    { name: 'Thor', city: 'Asgard' },
+  ];
   showList = true;
   selectedHero: IHero;
 
   constructor(private heroService: HeroService) {}
 
   ngOnInit() {
-    this.heroes = this.heroService.heroes;
+    // this.heroes = this.heroService.heroes;
+    this.heroService.newHero.subscribe((hero) => {
+      console.log('hero', hero);
+      if (hero) {
+        this.heroes.push(hero);
+      }
+    });
   }
 
   onHeroClick(hero: IHero, index: number) {
@@ -33,7 +44,7 @@ export class HomeComponent implements OnInit {
   addHero() {
     const newHero = { name: 'Catwoman', city: 'Zaragoza' };
     // const newHero = new Hero('Catwoman', 'Zaragoza');
-    // this.heroes.push(newHero);
-    this.heroService.addHero(newHero);
+    this.heroes.push(newHero);
+    // this.heroService.addHero(newHero);
   }
 }

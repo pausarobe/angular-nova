@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HeroService } from '../../services/hero.service';
 import { Hero, IHero } from './home.model';
 
 @Component({
@@ -6,14 +7,16 @@ import { Hero, IHero } from './home.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  heroes: IHero[] = [
-    { name: 'Spiderman', city: 'New York' },
-    { name: 'Batman', city: 'Gotham' },
-    { name: 'Thor', city: 'Asgard' },
-  ];
+export class HomeComponent implements OnInit {
+  heroes: IHero[];
   showList = true;
   selectedHero: IHero;
+
+  constructor(private heroService: HeroService) {}
+
+  ngOnInit() {
+    this.heroes = this.heroService.heroes;
+  }
 
   onHeroClick(hero: IHero, index: number) {
     this.selectedHero = this.heroes[index];
@@ -30,6 +33,7 @@ export class HomeComponent {
   addHero() {
     const newHero = { name: 'Catwoman', city: 'Zaragoza' };
     // const newHero = new Hero('Catwoman', 'Zaragoza');
-    this.heroes.push(newHero);
+    // this.heroes.push(newHero);
+    this.heroService.addHero(newHero);
   }
 }

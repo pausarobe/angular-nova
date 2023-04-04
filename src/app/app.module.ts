@@ -5,11 +5,12 @@ import { AppComponent } from './app.component';
 import { HeroComponent } from './pages/hero/hero.component';
 import { CityComponent } from './pages/home/city/city.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HeroService } from './services/hero.service';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CityComponent, HeroComponent],
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
-  providers: [],
+  providers: [HeroService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

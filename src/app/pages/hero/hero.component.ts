@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { HeroService } from '../../services/hero.service';
 
 @Component({
   selector: 'nova-hero',
@@ -15,6 +16,10 @@ export class HeroComponent implements OnInit {
     return this.form.get('heroCity') as FormControl;
   }
 
+  constructor(
+    private heroService: HeroService
+  ) {}
+
   ngOnInit() {
     this.buildForm();
   }
@@ -29,6 +34,10 @@ export class HeroComponent implements OnInit {
   onSubmit() {
     console.log('form', this.form);
     if (this.form.valid) {
+      this.heroService.addHero({
+        name: this.name.value,
+        city: this.city.value
+      });
     } else {
       this.form.markAllAsTouched();
     }

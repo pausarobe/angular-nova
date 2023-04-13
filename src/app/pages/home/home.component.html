@@ -1,0 +1,19 @@
+<div class="home">
+  <p>Soy el componente HOME </p>
+  <ng-content></ng-content>
+  <button (click)="onDisplay()">{{ showList ? 'Ocultar' : 'Mostrar' }}</button>
+  <ng-container *ngIf="showList">
+    <ul>
+      <li
+        *ngFor="let hero of heroes; index as i"
+        (click)="onHeroClick(hero, i)"
+        [ngClass]="{ selected: hero === selectedHero }"
+      >
+        {{ hero.name | uppercase }} 
+      </li>
+    </ul>
+    <nova-city [hero]="selectedHero" (reset)="onReset($event)"></nova-city>
+  </ng-container>
+  <br />
+  <button (click)="addHero()">{{ textoboton }}</button>
+</div>

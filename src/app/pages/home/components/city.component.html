@@ -1,0 +1,4 @@
+<div>
+  <span style="margin-right: 10px;">Su ciudad es: {{ hero?.city | capital }}</span>
+  <button *ngIf="hero" (click)="onReset()">Reset</button>
+</div>

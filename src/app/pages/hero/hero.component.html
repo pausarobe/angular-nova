@@ -1,0 +1,33 @@
+<div class="hero">
+  <p>Soy el componente HERO</p>
+  <form  (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="hero__control">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Your superhero name"
+        formControlName="heroName"
+      />
+      <span *ngIf="name.touched && name.invalid">Required</span>
+    </div>
+    <div class="hero__control">
+      <label for="city">City</label>
+      <input
+        type="text"
+        id="city"
+        placeholder="Superhero city"
+        formControlName="heroCity"
+      />
+      <span *ngIf="city.touched && city.errors && city.errors['required']"
+        >Required</span
+      >
+      <span *ngIf="city.touched && city.errors && city.errors['ciudadMala']"
+        >No puede ser NTTCity</span
+      >
+    </div>
+    <br />
+    <button type="submit">Build hero</button>
+    <button type="button" (click)="onReset()">Reset</button>
+  </form>
+</div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HeroService } from '../../shared/services/hero.service';
 import { IHero, Hero, Coche } from './models/home.model';
 
 @Component({
@@ -6,12 +7,13 @@ import { IHero, Hero, Coche } from './models/home.model';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
-  heroes: IHero[] = [
-    { name: 'Spiderman', city: 'New York', age: 20 },
-    { name: 'Batman', city: 'Gotham' },
-    { name: 'Thor', city: 'Asgard' },
-  ];
+export class HomeComponent implements OnInit {
+  // heroes: IHero[] = [
+  //   { name: 'Spiderman', city: 'New York', age: 20 },
+  //   { name: 'Batman', city: 'Gotham' },
+  //   { name: 'Thor', city: 'Asgard' },
+  // ];
+  heroes: IHero[];
   city: string;
   showList = true;
   selectedHero: IHero;
@@ -20,6 +22,19 @@ export class HomeComponent {
   coches: Coche[] = [
     { numeroPuertas: 5, color: 'Rojo', km: 0, velocidad: 200 },
   ];
+
+  constructor(private heroService: HeroService) {}
+
+  ngOnInit() {
+    this.heroes = this.heroService.heroes;
+    this.heroService.newHero.subscribe(hero => {
+      debugger;
+      console.log('nuevo heroe', hero);
+      if (hero) {
+        this.heroes.push(hero);
+      }
+    })
+  }
 
   // onHeroClick(hero) {
   //   this.city = hero.city

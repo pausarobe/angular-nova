@@ -1,6 +1,11 @@
-Soy el componente APP 
+Soy el componente APP
 <br />
-<nova-home>
-  <h1>Soy un H1</h1>
-  <p>y yo soy un p</p>
-</nova-home>
+<!-- <nova-home></nova-home>
+<br />
+<nova-hero></nova-hero> -->
+<ul class="nav">
+  <li class="nav-item" routerLink="/home" routerLinkActive="active">Home</li>
+  <li class="nav-item" routerLink="/hero" routerLinkActive="active">Hero</li>
+</ul>
+
+<router-outlet></router-outlet>

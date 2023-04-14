@@ -1,5 +1,5 @@
 <div class="home">
-  <p>Soy el componente HOME </p>
+  <p>Soy el componente HOME</p>
   <ng-content></ng-content>
   <button (click)="onDisplay()">{{ showList ? 'Ocultar' : 'Mostrar' }}</button>
   <ng-container *ngIf="showList">
@@ -15,5 +15,6 @@
     <nova-city [hero]="selectedHero" (reset)="onReset($event)"></nova-city>
   </ng-container>
   <br />
+  <div #test>soy un fragment</div>
   <button (click)="addHero()">{{ textoboton }}</button>
 </div>
